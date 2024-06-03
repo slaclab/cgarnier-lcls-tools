@@ -50,7 +50,8 @@ class ProjectionFit(BaseModel):
             if "sigma" in key or "mean" in key:
                 true_fitted_val = val * length
             else:
-                true_fitted_val = val * projection_data_range + np.min(projection_data)
+                true_fitted_val = val * projection_data_range  #np.min(projection_data)
+            #TODO: special case for amplitude and offset (above code is correct for amp)
             temp = {key: true_fitted_val}
             params_dict.update(temp)
         return params_dict
